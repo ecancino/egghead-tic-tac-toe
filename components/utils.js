@@ -1,41 +1,25 @@
-export const clone = x => JSON.parse(JSON.stringify(x));
+export const clone = x => Object.assign({}, x);
 
-export function generateGrid(rows, columns, mapper) {
-  return Array(rows)
+const createRange = (length, mapper) =>
+  Array(length)
     .fill()
-    .map(() =>
-      Array(columns)
-        .fill()
-        .map(mapper)
-    );
-}
+    .map(mapper);
 
-export function checkThree(a, b, c) {
-  if (!a || !b || !c) return false;
-  return a === b && b === c;
-}
+export const generateGrid = (rows, columns, mapper) =>
+  createRange(rows, () => createRange(columns, mapper));
 
-// ES2019 Array.prototype.flat() could be used instead
-export const flatten = arr => arr.reduce((acc, cur) => [...acc, ...cur], []);
+export const checkThree = (a, b, c) => a && b && c && (a === b && b === c);
 
-export function checkForWin(flatGrid) {
-  const [nw, n, ne, w, c, e, sw, s, se] = flatGrid;
+export const checkForWin = ([nw, n, ne, w, c, e, sw, s, se]) =>
+  checkThree(nw, n, ne) ||
+  checkThree(w, c, e) ||
+  checkThree(sw, s, se) ||
+  checkThree(nw, w, sw) ||
+  checkThree(n, c, s) ||
+  checkThree(ne, e, se) ||
+  checkThree(nw, c, se) ||
+  checkThree(ne, c, sw);
 
-  return (
-    checkThree(nw, n, ne) ||
-    checkThree(w, c, e) ||
-    checkThree(sw, s, se) ||
-    checkThree(nw, w, sw) ||
-    checkThree(n, c, s) ||
-    checkThree(ne, e, se) ||
-    checkThree(nw, c, se) ||
-    checkThree(ne, c, sw)
-  );
-}
+const isFullGrid = cells => cells.filter(Boolean).length === cells.length;
 
-export function checkForDraw(flatGrid) {
-  return (
-    !checkForWin(flatGrid) &&
-    flatGrid.filter(Boolean).length === flatGrid.length
-  );
-}
+export const checkForDraw = cells => !checkForWin(cells) && isFullGrid(cells);

@@ -5,7 +5,7 @@ import initialState from "./state";
 
 import Grid from "./Grid";
 
-export default function Game() {
+export default () => {
   const [state, dispatch] = useReducer(reducer, initialState());
   const { grid, status, turn } = state;
 
@@ -39,4 +39,4 @@ export default function Game() {
       <Grid grid={grid} onClick={claimCell} />
     </div>
   );
-}
+};
