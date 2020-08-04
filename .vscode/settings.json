@@ -1,0 +1,14 @@
+{
+  "editor.theme": "vs-dark",
+  "editor.roundedSelection": true,
+  "editor.cursorWidth": 2,
+  "editor.fontLigatures": true,
+  "editor.disableLayerHinting": true,
+  "editor.smoothScrolling": true,
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.letterSpacing": 0,
+  "editor.showUnused": true
+}
