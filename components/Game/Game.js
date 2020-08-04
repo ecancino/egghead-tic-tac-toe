@@ -22,6 +22,7 @@ export default function Game() {
       <div
         css={{
           display: "flex",
+          // flexFlow: "row nowrap",
           justifyContent: "space-between"
         }}
       >
