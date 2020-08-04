@@ -13,7 +13,9 @@ export default function Cell({ onClick, value }) {
         height: 100,
         color: COLOR[value],
         backgroundColor: "#fff",
-        cursor: "pointer"
+        "&:hover": {
+          color: "red"
+        }
       }}
       onClick={onClick}
       type="button"
