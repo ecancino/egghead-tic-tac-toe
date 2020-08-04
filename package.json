@@ -3,12 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-react": "^7.10.4",
-    "@emotion/babel-preset-css-prop": "^10.0.27",
-    "@emotion/core": "^10.0.28",
-    "babel-plugin-emotion": "^10.0.33",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },

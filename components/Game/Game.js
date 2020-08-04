@@ -9,7 +9,7 @@ export default function Game() {
   const [state, dispatch] = useReducer(reducer, initialState());
   const { grid, status, turn } = state;
 
-  const handleClick = (x, y) => {
+  const claimCell = (x, y) => {
     dispatch({ type: "CLICK", payload: { x, y } });
   };
 
@@ -18,21 +18,25 @@ export default function Game() {
   };
 
   return (
-    <div css={{ display: "inline-block" }}>
-      <div
-        css={{
+    <div style={{ display: "inline-block" }}>
+      <ul
+        style={{
+          padding: 0,
+          margin: 0,
+          listStyle: "none",
           display: "flex",
-          // flexFlow: "row nowrap",
           justifyContent: "space-between"
         }}
       >
-        <div>Next turn: {turn}</div>
-        <div>{status === "success" ? `${turn} won!` : null}</div>
-        <button onClick={reset} type="button">
-          reset
-        </button>
-      </div>
-      <Grid grid={grid} handleClick={handleClick} />
+        <li>Turn: {turn}</li>
+        <li>{status === "success" ? `${turn} won!` : null}</li>
+        <li>
+          <button onClick={reset} type="button">
+            reset
+          </button>
+        </li>
+      </ul>
+      <Grid grid={grid} onClick={claimCell} />
     </div>
   );
 }

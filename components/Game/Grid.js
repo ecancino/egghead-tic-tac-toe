@@ -2,7 +2,7 @@ import React from "react";
 
 import Cell from "./Cell";
 
-export default function Grid({ grid, handleClick }) {
+export default function Grid({ grid, onClick }) {
   return (
     <div style={{ display: "inline-block", margin: "1em 0" }}>
       <div
@@ -18,7 +18,7 @@ export default function Grid({ grid, handleClick }) {
           row.map((value, colIdx) => (
             <Cell
               key={`${colIdx}-${rowIdx}`}
-              onClick={() => handleClick(colIdx, rowIdx)}
+              onClick={() => onClick(colIdx, rowIdx)}
               value={value}
             />
           ))
